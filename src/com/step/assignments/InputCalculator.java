@@ -2,7 +2,7 @@ package com.step.assignments;
 
 import java.util.Scanner;
 
-public class ReadUserInput {
+public class InputCalculator {
     public static void main(String[] args) {
         System.out.println("Please enter the numbers :");
         inputThenPrintSumAndAverage();
