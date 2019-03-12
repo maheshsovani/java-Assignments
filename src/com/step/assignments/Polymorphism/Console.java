@@ -1,11 +1,18 @@
 package com.step.assignments.Polymorphism;
 
-public interface Console {
+public class Console implements Display {
 
-    public String print();
+    @Override
+    public String print() {
+        return null;
+    }
 
-    public void display(String content);
+    public void display(String content) {
+        System.out.println(content);
+    }
 
-    public void click();
+    @Override
+    public void click() {
 
+    }
 }

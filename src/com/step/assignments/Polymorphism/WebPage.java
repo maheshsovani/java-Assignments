@@ -1,6 +1,6 @@
 package com.step.assignments.Polymorphism;
 
-public class WebPage implements Console {
+public class WebPage implements Display {
     public String print() {
         return "This is some dummy string from Web Page";
     }

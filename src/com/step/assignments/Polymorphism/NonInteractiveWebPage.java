@@ -1,6 +1,6 @@
 package com.step.assignments.Polymorphism;
 
-public class NonInteractiveWebPage implements Console {
+public class NonInteractiveWebPage implements Display {
     public String print() {
         return "This is a dummy String from the Non interative webpage.";
     }

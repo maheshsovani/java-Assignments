@@ -2,9 +2,10 @@ package com.step.assignments.Polymorphism;
 
 public class Main {
     public static void main(String[] args) {
-        Console pdfPage = new PDFPage();
-        Console webPage = new WebPage();
-        Console nonInteractiveWebPage = new NonInteractiveWebPage();
+        Display console = new Console();
+        Display pdfPage = new PDFPage();
+        Display webPage = new WebPage();
+        Display nonInteractiveWebPage = new NonInteractiveWebPage();
 
         webPage.click();
         nonInteractiveWebPage.click();
@@ -13,6 +14,7 @@ public class Main {
         String content = nonInteractiveWebPage.print();
         String webPageContent = webPage.print();
 
+        console.display("This is a display from console");
         pdfPage.display(pdfContent);
         webPage.display(webPageContent);
         nonInteractiveWebPage.display(content);
