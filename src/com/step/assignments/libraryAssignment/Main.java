@@ -1,48 +1,91 @@
 package com.step.assignments.libraryAssignment;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
-
-        Book mrutyunjay = new Book("Mrutyunjay");
-        Book chhava = new Book("Chhava");
-        Book rau = new Book("Rau");
-        Book yayati = new Book("Yayati");
-        Book shreemantYogi = new Book("ShreemantYogi");
-        Book yugandhar = new Book("Yugandhar");
-
-        Reader tushar = new Reader("Tushar");
-        Reader mahesh = new Reader("Mahesh");
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Book> books = new HashMap<>();
+        Set<Reader> readers = new HashSet<>();
 
         Librarian librarian = new Librarian("Chandu");
-
-        Map<String, Book> books = new HashMap<>();
-        books.put(mrutyunjay.getName(), mrutyunjay);
-        books.put(chhava.getName(), chhava);
-        books.put(rau.getName(), rau);
-        books.put(yayati.getName(), yayati);
-        books.put(shreemantYogi.getName(), shreemantYogi);
-
-
-        Set<Reader> readers = new HashSet<>();
-        readers.add(tushar);
-        readers.add(mahesh);
-        readers.add(mahesh);
-
-
         Library library = new Library("Granthalay", books, readers, librarian);
-        library.borrowBook(tushar, "Rau");
 
-        library.addBook(librarian, yugandhar);
+        System.out.println("Enter Your Choice ?");
+        System.out.println("1 : Add Reader");
+        System.out.println("2 : Add a Book");
+        System.out.println("3 : Search a Book:");
+        System.out.println("4 : Print all Book:");
+        System.out.println("5 : Get all users");
+        System.out.println("6 : check is book removed");
+        System.out.println("7 : remove the book");
+        System.out.println("8 : Enter a reader name to get all books: ");
+        System.out.println("9 : Enter a reader name to get details: ");
+        System.out.println("\n");
 
-        library.borrowBook(tushar, "Yugandhar");
-        library.borrowBook(tushar, "Yayati");
+        int choice = 10;
 
-        library.getUserBooks(librarian, "Tushar");
-        System.out.println(tushar.getBorrowedBooks());
+        while (choice != 0) {
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter Reader Name :");
+                    String reader = scanner.next();
+                    library.addReader(librarian, new Reader(reader));
+                    System.out.println("Reader added!!!");
+                    break;
+                case 2:
+                    System.out.println("Enter Book Name to add :");
+                    String book = scanner.next();
+                    library.addBook(librarian, new Book(book));
+                    System.out.println("Book added successfully !!!");
+                    break;
+
+                case 3:
+                    System.out.println("Enter Book Name to search :");
+                    String name = scanner.next();
+                    Book searchedBook = library.searchBook(name);
+                    System.out.println(searchedBook);
+                    break;
+
+                case 4:
+                    System.out.println("All the books in the library are : ");
+                    library.printBooks();
+                    break;
+
+                case 5:
+                    System.out.println("All the Readers in the library are : ");
+                    library.printReaders();
+                    break;
+
+                case 6:
+                    System.out.println("Enter a book name to check is removed: ");
+                    String checkBook = scanner.next();
+                    System.out.println(library.isBookRemoved(librarian, checkBook));
+                    break;
+
+                case 7:
+                    System.out.println("Enter a book name to remove : ");
+                    String bookToRemove = scanner.next();
+                    library.removeBook(librarian, bookToRemove);
+                    System.out.println("Book was removed successfully !!!!");
+                    break;
+
+                case 8:
+                    System.out.println("Enter a reader name to get all books: ");
+                    String readerName = scanner.next();
+                    System.out.println(library.getUserBooks(librarian, readerName));
+                    break;
+
+                case 9:
+                    System.out.println("Enter a reader name to get details: ");
+                    String nameToSearch = scanner.next();
+                    System.out.println(library.getBorrowerDetails(librarian, nameToSearch));
+                    break;
+            }
+        }
     }
+
 }

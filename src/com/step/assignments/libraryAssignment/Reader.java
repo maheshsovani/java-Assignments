@@ -15,10 +15,6 @@ public class Reader {
         return name;
     }
 
-    @Override
-    public String toString() {
-        return this.getName();
-    }
 
     public void borrowBook(Book book) {
         this.borrowedBooks.put(book.getName(), book);
@@ -35,5 +31,10 @@ public class Reader {
 
     public Map<String, Book> getBorrowedBooks() {
         return borrowedBooks;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

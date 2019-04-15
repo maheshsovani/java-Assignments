@@ -54,7 +54,7 @@ public class Library {
 
     public Map<String, Book> getUserBooks(Librarian librarian, String name) {
         for (Reader reader : this.readers) {
-            if (reader.getName() == name) {
+            if (reader.getName().equals(name)) {
                 return reader.getBorrowedBooks();
             }
         }
@@ -81,4 +81,7 @@ public class Library {
     }
 
 
+    public void addReader(Librarian librarian, Reader reader) {
+        this.readers.add(reader);
+    }
 }
